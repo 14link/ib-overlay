@@ -27,10 +27,33 @@ BASE_PACKAGES="$BASE_PACKAGES luci-i18n-filemanager-zh-cn"
 
 #打印机相关
 BASE_PACKAGES="$BASE_PACKAGES luci-i18n-p910nd-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES kmod-lp"
+BASE_PACKAGES="$BASE_PACKAGES kmod-usb-printer"
+
 #BASE_PACKAGES="$BASE_PACKAGES luci-i18n-openvpn-zh-cn"
 
+# ==================================================
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-ddns-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-samba4-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-smartdns-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-upnp-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-wol-zh-cn"
+BASE_PACKAGES="$BASE_PACKAGES luci-i18n-nlbwmon-zh-cn"
+# mosdns
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-mosdns"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-mosdns-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-vlmcsd-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-unblockneteasemusic"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-taskplan"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-taskplan-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-wrtbwmon"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-wrtbwmon-zh-cn"
 
+BASE_PACKAGES="$BASE_PACKAGES nano-full"
+BASE_PACKAGES="$BASE_PACKAGES open-vm-tools"
+BASE_PACKAGES="$BASE_PACKAGES open-vm-tools-fuse"
 
+# ==================================================
 # 下面是自定义的包 你可以用#注释掉不需要的包 也可以添加更多的包 
 # 使用条件:在extra-packages下放置了相关run或者ipk
 CUSTOM_PACKAGES=""
@@ -45,29 +68,34 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-argon-config-zh-cn"
 CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-argon-config"
 
 # 第三方插件 istore 应用商店
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-store"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-store"
 # 第三方插件 首页和网络向导
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-quickstart"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-quickstart-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-quickstart"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-quickstart-zh-cn"
+# mosdns
+# BASE_PACKAGES="$BASE_PACKAGES luci-app-mosdns"
+# mosdns
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-mosdns"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-mosdns-zh-cn"
 
 # 第三方插件 luci-app-adguardhome 去广告
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-adguardhome"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-adguardhome"
 # 第三方插件 openclash 内核放在files/etc/openclash/core/clash_meta 若不勾选则不集成
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-openclash"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-openclash"
 # 第三方插件 luci-app-passwall 包含内部组件
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-passwall-zh-cn"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES geoview"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES xray-core"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES sing-box"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES hysteria"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-passwall"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-passwall-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES geoview"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES xray-core"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES sing-box"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES hysteria"
 # 第三方插件 luci-app-ssr-plus 尤其注意要包含 shadowsocks-libev-ss-server
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-ssr-plus"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-ssr-plus"
 # 第三方插件 luci-app-homeproxy
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-homeproxy-zh-cn"
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-homeproxy"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-homeproxy-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-homeproxy"
 # 第三方插件 luci-app-nikki
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-nikki-zh-cn"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-i18n-nikki-zh-cn"
 
 # ✅ 校验 CUSTOM_PACKAGES 中的包是否都存在于 packages_names.txt
 package_file="packages_names.txt"
@@ -116,5 +144,6 @@ fi
 # 例如files/mnt对应覆盖openwrt系统/mnt目录中的文件 
 OUTPUT_DIR=$(pwd)/output
 mkdir -p $OUTPUT_DIR
-make image PROFILE=generic PACKAGES="$PACKAGES"  FILES=files ROOTFS_PARTSIZE=1024 BIN_DIR=$OUTPUT_DIR
+make image PROFILE=generic PACKAGES="$PACKAGES"  FILES=files ROOTFS_PARTSIZE=800 BIN_DIR=$OUTPUT_DIR
 ls -lah $OUTPUT_DIR
+
